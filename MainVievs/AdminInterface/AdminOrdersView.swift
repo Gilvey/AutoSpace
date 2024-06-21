@@ -13,6 +13,7 @@ struct AdminOrdersView: View {
     @State private var isDetailViewPresented = false
     @State private var isAuthviewPresented = false
     @State private var isShowAddProductView = false
+    @State private var buttonAngle: Double = 0
     
     var body: some View {
         VStack {
@@ -39,21 +40,20 @@ struct AdminOrdersView: View {
                 Spacer()
                 
                 Button {
+                    
                     viewModel.getOrders()
-                        
+                    buttonAngle -= 360
                 } label: {
                    Image(systemName: "gobackward")
                         .resizable()
                         .frame(width: 25, height: 25)
                         .foregroundColor(.autoblue)
                         .padding(.horizontal, 20)
+                        .rotationEffect(.degrees(buttonAngle))
+                        .animation(.interpolatingSpring(stiffness: 5, damping: 1))
+                        
                     
-                /*Text("Обновить")
-                        .font(.title3)
-                        .padding()
-                        .background(Color.autoblue)
-                        .cornerRadius(24)
-                        .foregroundColor(.white) */
+                
                 }
                 
             }
@@ -62,6 +62,20 @@ struct AdminOrdersView: View {
                 ForEach(viewModel.orders, id: \.id) {
                     order in
                     OrderCell(order: order)
+                        .swipeActions{
+                            Button(role: .destructive){
+                                //viewModel.removeOrder(at: <#T##IndexSet#>)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }.tint(.red)
+                        }
+                        .swipeActions{
+                            Button{
+                                //
+                            } label: {
+                                Label("Edit", systemImage: "pencil")
+                            }.tint(.blue)
+                        }
                         .onTapGesture {
                             viewModel.currentOrder = order
                             isDetailViewPresented.toggle()
@@ -77,6 +91,9 @@ struct AdminOrdersView: View {
                     let orderViewModel = OrderDetailViewModel(order: viewModel.currentOrder)
                     OrderDetailView(viewModel: orderViewModel)
                 })
+                .refreshable {
+                    viewModel.getOrders()
+                }
         }.fullScreenCover(isPresented: $isAuthviewPresented) {
             AuthView()
         }.sheet(isPresented: $isShowAddProductView, content: {
