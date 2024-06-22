@@ -11,6 +11,7 @@ import FirebaseFirestore
 
 class AdminOrdersViewModel: ObservableObject{
     
+    
     @Published var orders = [Order]()
     
     var currentOrder = Order(userID: "111", date: Date(), status: "В обработке")
@@ -51,4 +52,12 @@ class AdminOrdersViewModel: ObservableObject{
             }
         }
     }
+
+    func delete(at order: Order) {
+        let db = Firestore.firestore()
+        db.collection("Orders").document(order.id).delete()
+        
+        getOrders()
+    }
+
 }

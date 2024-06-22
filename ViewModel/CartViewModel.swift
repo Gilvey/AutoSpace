@@ -24,7 +24,7 @@ class CartViewModel: ObservableObject {
     }
     
   func setOrder() {
-      DataBaseService.shared.setOrder(order: Order(id: UUID().uuidString, userID: AuthService.shared.currentUser!.uid, positions: self.positions, date: Date(), status: "в обработке")) { result in
+      DataBaseService.shared.setOrder(order: Order(id: UUID().uuidString, userID: AuthService.shared.currentUser!.uid, positions: self.positions, date: Date(), status: OrderStatus.new.rawValue)) { result in
             switch result {
                 
             case .success(_):

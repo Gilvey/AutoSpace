@@ -26,7 +26,7 @@ struct AutoSpaceApp: App {
                     TabBar(viewModel: viewModel)
                 }
             } else {
-                AuthView()
+                LunchView()
             }
         }
     }

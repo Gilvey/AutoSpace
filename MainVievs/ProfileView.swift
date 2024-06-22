@@ -22,10 +22,11 @@ struct ProfileView: View {
                 Image("profile")
                     .resizable()
                     .clipShape(Circle())
-                    .frame(width: 100, height: 100)
+                    .frame(width: 70, height: 70)
                     .onTapGesture {
                         isAvaAlertPresented.toggle()
                     }
+                    .padding(.leading, 20)
                     .confirmationDialog("Откуда взять фотографию", isPresented: $isAvaAlertPresented) {
                         Button{
                             print("Библиотека")
@@ -45,7 +46,7 @@ struct ProfileView: View {
                     
                     
                     HStack {
-                        Text("+375 ")
+                        Text("+375")
                         TextField("Номер телефона", value: $viewModel.profile.phone, format: .number)
                     }
                 }.padding()
@@ -66,6 +67,9 @@ struct ProfileView: View {
                 }
                 
             }.listStyle(.plain)
+                .refreshable {
+                    viewModel.getOrders()
+                }
             
             Button{
                 isQuitAlertPresented.toggle()
@@ -80,6 +84,7 @@ struct ProfileView: View {
             }.confirmationDialog("Вы уверены, что хотите выйти?", isPresented: $isQuitAlertPresented) {
                 Button{
                     isAuthViewPresented.toggle()
+                    AuthService.shared.signOut()
                 } label: {
                     Text("Да")
                 }

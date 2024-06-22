@@ -42,6 +42,7 @@
 		4E9BD0652BCDA84A0004675E /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BD0642BCDA84A0004675E /* AuthView.swift */; };
 		4E9BD0672BCDA84B0004675E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E9BD0662BCDA84B0004675E /* Assets.xcassets */; };
 		4E9BD06A2BCDA84B0004675E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E9BD0692BCDA84B0004675E /* Preview Assets.xcassets */; };
+		4EAC27EA2C25EC6D00B63FC9 /* LunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC27E92C25EC6D00B63FC9 /* LunchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,8 @@
 		4E9BD0642BCDA84A0004675E /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		4E9BD0662BCDA84B0004675E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E9BD0692BCDA84B0004675E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4EAC27E82C25DB2200B63FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4EAC27E92C25EC6D00B63FC9 /* LunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +153,7 @@
 				4E9BD0642BCDA84A0004675E /* AuthView.swift */,
 				4E9888D22BD043D200BB6814 /* CartView.swift */,
 				4E9888CB2BD03A6600BB6814 /* TabBar.swift */,
+				4EAC27E92C25EC6D00B63FC9 /* LunchView.swift */,
 			);
 			path = MainVievs;
 			sourceTree = "<group>";
@@ -189,6 +193,7 @@
 		4E9BD0612BCDA84A0004675E /* AutoSpace */ = {
 			isa = PBXGroup;
 			children = (
+				4EAC27E82C25DB2200B63FC9 /* Info.plist */,
 				4E9BD0622BCDA84A0004675E /* AutoSpaceApp.swift */,
 				4E2EAADE2BD964EA0089DA49 /* GoogleService-Info.plist */,
 				4E9BD0662BCDA84B0004675E /* Assets.xcassets */,
@@ -299,6 +304,7 @@
 				4E409F772BD3A5FC000ABA1D /* ProductDetailVeiwModel.swift in Sources */,
 				4E9888CC2BD03A6700BB6814 /* TabBar.swift in Sources */,
 				4E9BD0652BCDA84A0004675E /* AuthView.swift in Sources */,
+				4EAC27EA2C25EC6D00B63FC9 /* LunchView.swift in Sources */,
 				4E661EC42BEE055100696BA4 /* AdminOrdersView.swift in Sources */,
 				4E1F6E372BD526B200626279 /* PositionCell.swift in Sources */,
 				4E36EF022BF1E89B00CC5CB3 /* StorageService.swift in Sources */,
@@ -448,6 +454,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AutoSpace/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AutoSpace/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Разрешите использовать камеру";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Разрешите открыть галерею";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -478,6 +485,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AutoSpace/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AutoSpace/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Разрешите использовать камеру";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Разрешите открыть галерею";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

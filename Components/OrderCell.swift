@@ -19,6 +19,7 @@ struct OrderCell: View {
     var body: some View {
         HStack {
             Text("\(order.date.formatted(date: .numeric, time: .shortened))")
+                .frame(width: 140)
             Text("\(order.cost) $")
                 .bold()
                 .frame(width: 90)

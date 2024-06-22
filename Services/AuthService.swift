@@ -26,6 +26,8 @@ class AuthService {
        try! auth.signOut()
     }
     
+    
+    
     func signUp(email: String,
                 password: String,
                 completion:

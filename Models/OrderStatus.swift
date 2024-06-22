@@ -10,7 +10,7 @@ import Foundation
 
 enum OrderStatus: String, CaseIterable {
     case new = "Новый"
-    case cooking = "Готовится"
+    case cooking = "Комплектуется"
     case delivery = "Доставляется"
     case completed = "Выполнен"
     case canceled = "Отменен"

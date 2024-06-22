@@ -11,7 +11,7 @@ struct CartView: View {
     
    @StateObject var viewModel: CartViewModel
     @State private var isAlertPresented = false
-    var alertMessage = "Заказ в обработке"
+    var alertMessage = "Заказ отправлен"
     
     
     var body: some View {

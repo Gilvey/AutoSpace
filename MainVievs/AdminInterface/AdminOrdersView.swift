@@ -14,6 +14,7 @@ struct AdminOrdersView: View {
     @State private var isAuthviewPresented = false
     @State private var isShowAddProductView = false
     @State private var buttonAngle: Double = 0
+    @State private var isSwiped = false
     
     var body: some View {
         VStack {
@@ -40,7 +41,11 @@ struct AdminOrdersView: View {
                 Spacer()
                 
                 Button {
-                    
+                    withAnimation(.interpolatingSpring(stiffness: 10, damping: 5)) {
+                        viewModel.getOrders()
+                        buttonAngle -= 360
+                        isSwiped.toggle()
+                    }
                     viewModel.getOrders()
                     buttonAngle -= 360
                 } label: {
@@ -50,7 +55,7 @@ struct AdminOrdersView: View {
                         .foregroundColor(.autoblue)
                         .padding(.horizontal, 20)
                         .rotationEffect(.degrees(buttonAngle))
-                        .animation(.interpolatingSpring(stiffness: 5, damping: 1))
+                        
                         
                     
                 
@@ -62,20 +67,24 @@ struct AdminOrdersView: View {
                 ForEach(viewModel.orders, id: \.id) {
                     order in
                     OrderCell(order: order)
-                        .swipeActions{
+                        .swipeActions(edge: .trailing) {
+                            
                             Button(role: .destructive){
-                                //viewModel.removeOrder(at: <#T##IndexSet#>)
+                                viewModel.delete(at: order)
                             } label: {
-                                Label("Delete", systemImage: "trash")
+                                Image(systemName: "trash")
                             }.tint(.red)
-                        }
-                        .swipeActions{
+
+                        
+                            
                             Button{
                                 //
                             } label: {
                                 Label("Edit", systemImage: "pencil")
                             }.tint(.blue)
                         }
+                    
+                    
                         .onTapGesture {
                             viewModel.currentOrder = order
                             isDetailViewPresented.toggle()
