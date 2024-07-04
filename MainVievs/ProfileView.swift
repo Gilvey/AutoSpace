@@ -6,42 +6,29 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ProfileView: View {
     
     @State private var isAvaAlertPresented = false
     @State private var isQuitAlertPresented = false
     @State private var isAuthViewPresented = false
-    
+    @State private var selectedItem: PhotosPickerItem?
+    @State private var selectedPhotoData: Data?
+    @State private var image = UIImage(systemName: "photo")!
     @StateObject var viewModel: ProfileViewModel
+    
     
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack{
-                Image("profile")
-                    .resizable()
-                    .clipShape(Circle())
-                    .frame(width: 70, height: 70)
-                    .onTapGesture {
-                        isAvaAlertPresented.toggle()
-                    }
-                    .padding(.leading, 20)
-                    .confirmationDialog("Откуда взять фотографию", isPresented: $isAvaAlertPresented) {
-                        Button{
-                            print("Библиотека")
-                        } label: {
-                            Text("Из галереи")
-                        }
-                        Button{
-                            print("Камера")
-                        } label: {
-                            Text("Камера")
-                        }
-                        
-                    }
+                
+                TestView()
+                    .padding(.leading, 15)
                 
                 VStack {
+                    
                     TextField("Имя пользователя", text: $viewModel.profile.name)
                     
                     
@@ -89,7 +76,7 @@ struct ProfileView: View {
                     Text("Да")
                 }
             }
-           
+            
             .onAppear{
                 self.viewModel.getProfile()
                 self.viewModel.getOrders()
@@ -108,4 +95,5 @@ struct ProfileView: View {
 #Preview {
     ProfileView(viewModel: ProfileViewModel(profile: MainUser(id: "", name: "Николай Гильвей", phone: 296791754, adress: "г. Минск, ул. Одоевского 87, кв. 28")))
 }
-//viewModel: ProfileViewModel(profile: MainUser(id: "", name: "Николай Гильвей", phone: 2967914, adress: "г. Минск, ул. Одоевского 87, кв. 28"))
+
+

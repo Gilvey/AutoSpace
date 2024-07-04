@@ -56,6 +56,7 @@ class AdminOrdersViewModel: ObservableObject{
     func delete(at order: Order) {
         let db = Firestore.firestore()
         db.collection("Orders").document(order.id).delete()
+        print("Айди удаленного заказа \(order.id)")
         
         getOrders()
     }

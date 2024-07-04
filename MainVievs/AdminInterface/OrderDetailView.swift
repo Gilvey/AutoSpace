@@ -11,13 +11,9 @@ struct OrderDetailView: View {
     
     @StateObject var viewModel: OrderDetailViewModel
     
-    var statuses: [String] {
-        var status = [String]()
-        for sts in OrderStatus.allCases {
-            status.append(sts.rawValue)
-        }
-        return status
-    }
+    
+    var statuses = OrderStatus.allCases.map {$0.rawValue}
+    
     var body: some View {
         
         VStack(alignment: .leading, spacing: 8 ){
@@ -46,13 +42,15 @@ struct OrderDetailView: View {
 
             
             List{
-                ForEach(viewModel.order.positions, id: \.id) {
-                    position in
-                    PositionCell(position: position)
-                }
+                Section("Позиции") {
+                    ForEach(viewModel.order.positions, id: \.id) {
+                        position in
+                        PositionCell(position: position)
+                    }
+                }.font(.title2).bold()
                 Text("Итого: \(viewModel.order.cost) $").bold()
-            }
-           
+            }.listStyle(.plain)
+        
         }.padding()
             .onAppear() {
                 viewModel.getUserData()

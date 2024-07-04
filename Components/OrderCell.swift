@@ -24,7 +24,7 @@ struct OrderCell: View {
                 .bold()
                 .frame(width: 90)
             Text("\(order.status)")
-                .frame(width: 120)
+                .frame(width: 130)
                 .foregroundColor(.green)
         }
     }

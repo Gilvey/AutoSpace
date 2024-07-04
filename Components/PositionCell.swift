@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import os
 
 struct PositionCell: View {
     
     let position: Position
     
+    @State var uiImage = UIImage(named: "bg")
+    
     var body: some View {
         HStack {
-            Image(self.position.product.imageUrl)
+            Image(uiImage: uiImage!)
                 .resizable()
                 .frame(width: 50,height: 50)
             Text(self.position.product.title)
@@ -28,6 +31,19 @@ struct PositionCell: View {
         }.padding(15)
             .background(Color.alpha1)
             .cornerRadius(20)
+            .onAppear {
+                StorageService.shared.downloadProductImage(id: self.position.product.id) { result in
+                    switch result {
+                    
+                    case .success(let data):
+                        if let image = UIImage(data: data) {
+                            self.uiImage = image
+                        }
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            }
             
     }
 }

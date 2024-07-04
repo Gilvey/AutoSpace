@@ -12,7 +12,7 @@ import FirebaseAuth
 let screen = UIScreen.main.bounds
 
 @main
-struct AutoSpaceApp: App {
+    struct AutoSpaceApp: App {
     
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
     
